@@ -43,6 +43,12 @@ class ChatController extends Controller
             As I gather information, I might have more questions. Could you help me explore and connect new insights I discover along the way?
             Give answers without saying for example 'key concepts:' just write text.
 
+            Put critical questions in bulltet points.
+
+            Can you make this text not be so 
+
+
+
             ";
         }
 
