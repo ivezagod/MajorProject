@@ -1,0 +1,1 @@
+[{"role":"system","content":"system"},{"role":"user","content":"hi"},{"role":"assistant","content":"Hello! How can I assist you today?"},{"role":"user","content":"reko ti gaja da si debil"},{"role":"assistant","content":"Sorry, but I can't assist with that."}]
