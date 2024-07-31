@@ -26,17 +26,17 @@ class OpenAiService
     {
         $filePath = storage_path("conversations/{$conversationId}.txt");
 
-        // If conversationId is provided, read the existing conversation if the file exists.
+
         if ($conversationId && file_exists($filePath)) {
             $conversation = json_decode(file_get_contents($filePath), true);
         } else {
-            // Initialize conversation with the system message if this is the first message.
+
             $conversation = [
                 ["role" => 'system', "content" => $prompt['role']]
             ];
         }
 
-        // Add new user prompt to conversation
+
         $conversation[] = ["role" => 'user', "content" => $prompt['prompt']];
 
         try {
@@ -53,11 +53,9 @@ class OpenAiService
             $data = json_decode($response->getBody(), true);
             $modelResponse = end($data['choices'])['message']['content'];
 
-            // Add model's response to conversation
+
             $conversation[] = ["role" => 'assistant', "content" => $modelResponse];
 
-            // Save the updated conversation.
-            // This will create a new file if it doesn't exist.
             file_put_contents($filePath, json_encode($conversation));
 
             return $modelResponse;

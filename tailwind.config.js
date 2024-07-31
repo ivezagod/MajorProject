@@ -26,6 +26,12 @@ export default {
                 'success-light': '#CAF4FF',
                 'success-dark': '#A0DEFF',
             },
+            backgroundImage: {
+                'custom-bg': "url('public/images/bgImage.jpg')",
+            },
+            backdropBlur: {
+                'md': '8px',
+            },
         },
     },
 

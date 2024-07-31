@@ -14,3 +14,4 @@ Route::get('/user', function (Request $request) {
 Route::post('/chat', [ChatController::class, 'getChatResponse'])->name('chat');
 
 
+
