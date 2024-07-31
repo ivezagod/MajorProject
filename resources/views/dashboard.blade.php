@@ -46,14 +46,10 @@
                 <h1 class="text-4xl font-bold mb-4">Transform your learning experience with our AI-powered teaching assistant—personalized, interactive, and tailored just for you!</h1>
                 <form id="chat-form" class="flex justify-center mt-8 space-x-4" action="{{ route('chat') }}" method="post">
                     <input id="chat-input" name="prompt" type="text" class="p-4 rounded-lg w-96 text-black" placeholder="Your prompt">
-                    <div class="flex items-center ml-4">
-                        <input type="checkbox" id="prewrittenPrompt" name="prewrittenPrompt" value="yes">
-                        <label for="prewrittenPrompt" class="ml-2 text-white">Send prewritten prompt</label>
-                    </div>
                     <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg">Send</button>
                 </form>
-                <div id="loading-indicator" class=" hidden flex items-center justify-center gap-2 text-white mt-4">
-                    <img src="/images/loading.gif" alt="Loading" class="w-6 h-6">
+                <div id="loading-indicator" class="hidden flex items-center justify-center gap-2 text-white mt-4">
+                    <img src="{{ asset('images/loading.gif') }}" alt="Loading" class="w-6 h-6">
                     <span>Loading...</span>
                 </div>
             </div>
@@ -77,7 +73,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             const chatForm = document.getElementById('chat-form');
             const chatInput = document.getElementById('chat-input');
-            const prewrittenPromptCheckbox = document.getElementById('prewrittenPrompt');
             const loadingIndicator = document.getElementById('loading-indicator');
             const contentPanel = document.getElementById('content-panel');
             const chatPrompt = document.getElementById('chat-prompt');
@@ -89,7 +84,6 @@
             chatForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 const message = chatInput.value.trim();
-                const prewrittenPrompt = prewrittenPromptCheckbox.checked;
 
                 if (message !== '') {
                     chatPrompt.textContent = message;
@@ -99,7 +93,7 @@
                         prompt: message,
                         conversation_id: conversationId,
                         role: 'system',
-                        prewritten_prompt: prewrittenPrompt,
+                        prewritten_prompt: true,  // Always use prewritten prompt
                     }, {
                         headers: {
                             'Content-Type': 'application/json',
@@ -142,7 +136,6 @@
                     });
                 }
 
-
                 setTimeout(() => {
                     new Swiper('.swiper-container', {
                         loop: false,
@@ -158,7 +151,7 @@
                             clickable: true,
                         },
                     });
-                }, 100);
+                }, 0);
             }
 
             function handleError(error) {
