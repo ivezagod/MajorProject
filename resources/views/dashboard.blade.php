@@ -52,8 +52,8 @@
                     </div>
                     <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg">Send</button>
                 </form>
-                <div id="loading-indicator" class="hidden flex items-center justify-center gap-2 text-white mt-4">
-                    <img src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/assets/images/spinner.svg" alt="Loading" class="w-6 h-6">
+                <div id="loading-indicator" class=" hidden flex items-center justify-center gap-2 text-white mt-4">
+                    <img src="/images/loading.gif" alt="Loading" class="w-6 h-6">
                     <span>Loading...</span>
                 </div>
             </div>
@@ -62,7 +62,7 @@
 
     <div class="bg-[#141411] text-white overflow-hidden">
         <div class="p-10 max-w-7xl mx-auto">
-            <div id="chat-prompt" class=" text-white text-center text-lg mb-4"></div>
+            <div id="chat-prompt" class="text-white text-center text-lg mb-4"></div>
             <div id="content-panel" class="swiper-container hidden">
                 <div class="swiper-wrapper"></div>
                 <div class="swiper-button-next text-white mt-[500px]"></div>
@@ -142,7 +142,7 @@
                     });
                 }
 
-                // Initialize Swiper after slides are appended to the DOM
+
                 setTimeout(() => {
                     new Swiper('.swiper-container', {
                         loop: false,
