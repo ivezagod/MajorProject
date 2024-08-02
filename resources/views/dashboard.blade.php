@@ -14,17 +14,26 @@
             padding-bottom: 70px; /* Adjust padding to make space for pagination */
         }
 
-        .swiper-slide {
+        .custom-card {
             background-color: #11a043;
             color: white;
             border-radius: 10px;
             padding: 20px;
             height: auto;
-            max-width: 90%; /* Make the cards wider */
+            width: 100%; /* Full width on small screens */
             transform: scale(0.8);
             transition: transform 0.3s ease;
             overflow: hidden; /* Ensure content stays within the card */
         }
+
+        /* Styles for larger screens */
+        @media (min-width: 640px) {
+            .custom-card {
+                max-width: 90%; /* Make the cards wider */
+                width: auto; /* Override the width to auto for larger screens */
+            }
+        }
+
 
         .swiper-slide-active {
             transform: scale(1);
@@ -62,8 +71,8 @@
             <div id="chat-prompt" class="text-white text-center text-3xl font-bold mb-4"></div>
             <div id="content-panel" class="swiper-container hidden">
                 <div class="swiper-wrapper"></div>
-                <div class="swiper-button-next text-white mt-[500px]"></div>
-                <div class="swiper-button-prev text-white mt-[500px]"></div>
+                <div class="swiper-button-next text-white mt-[400px]"></div>
+                <div class="swiper-button-prev text-white mt-[400px]"></div>
             </div>
         </div>
     </div>
