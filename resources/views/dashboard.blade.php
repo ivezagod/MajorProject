@@ -45,7 +45,7 @@
             <div class="max-w-3xl mx-auto p-6">
                 <h1 class="text-4xl font-bold mb-4">Transform your learning experience with our AI-powered teaching assistant—personalized, interactive, and tailored just for you!</h1>
                 <form id="chat-form" class="sm:flex flex flex-col sm:flex-row items-center sm:items-start justify-center mt-8 space-x-4" action="{{ route('chat') }}" method="post">
-                    <input id="chat-input" name="prompt" type="text" class="p-4 rounded-lg w-96 text-black" placeholder="Your prompt">
+                    <input id="chat-input" name="prompt" type="text" class="p-4 rounded-lg w-full sm:w-96 text-black" placeholder="Your prompt">
                     <button type="submit" class="bg-green-500 hover:bg-green-600 mt-10 sm:mt-0 text-white px-8 py-4 rounded-lg">Send</button>
                 </form>
                 <div id="loading-indicator" class="hidden flex items-center justify-center gap-2 text-white mt-4">
