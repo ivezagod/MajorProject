@@ -39,7 +39,7 @@
 </head>
 <body>
 <x-app-layout>
-    <div class="relative bg-[url('/public/images/bgImage.jpg')] bg-center bg-cover bg-blend-normal h-screen">
+    <div class="relative bg-[url('/public/images/bgImage.jpg')] bg-center bg-cover bg-blend-normal h-screen pt-16">
         <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
         <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
             <div class="max-w-3xl mx-auto p-6">
@@ -56,9 +56,10 @@
         </div>
     </div>
 
+
     <div class="bg-[#141411] text-white overflow-hidden">
         <div class="p-10 max-w-7xl mx-auto">
-            <div id="chat-prompt" class="text-white text-center text-lg mb-4"></div>
+            <div id="chat-prompt" class="text-white text-center text-3xl font-bold mb-4"></div>
             <div id="content-panel" class="swiper-container hidden">
                 <div class="swiper-wrapper"></div>
                 <div class="swiper-button-next text-white mt-[500px]"></div>
