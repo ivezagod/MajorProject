@@ -14,6 +14,29 @@
             padding-bottom: 70px; /* Adjust padding to make space for pagination */
         }
 
+        .swiper-slide {
+            background-color: #11a043;
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            height: auto;
+            max-width: 90%; /* Make the cards wider */
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+            overflow: hidden; /* Ensure content stays within the card */
+        }
+
+        .swiper-slide-active {
+            transform: scale(1);
+        }
+
+        .swiper-pagination {
+            margin-top: 450px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Custom card styles */
         .custom-card {
             background-color: #11a043;
             color: white;
@@ -22,8 +45,9 @@
             height: auto;
             width: 100%; /* Full width on small screens */
             transform: scale(0.8);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden; /* Ensure content stays within the card */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow to look more like cards */
         }
 
         /* Styles for larger screens */
@@ -31,18 +55,14 @@
             .custom-card {
                 max-width: 90%; /* Make the cards wider */
                 width: auto; /* Override the width to auto for larger screens */
+                transform: scale(1); /* Scale back to original size */
             }
         }
 
-
-        .swiper-slide-active {
-            transform: scale(1);
-        }
-
-        .swiper-pagination {
-            margin-top: 500px;
-            left: 50%;
-            transform: translateX(-50%);
+        /* Add animation on hover */
+        .custom-card:hover {
+            transform: scale(1.05); /* Slightly increase the size on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
         }
     </style>
 </head>
@@ -53,9 +73,9 @@
         <div class="relative z-10 flex flex-col items-center justify-center h-full text-center text-white">
             <div class="max-w-3xl mx-auto p-6">
                 <h1 class="text-4xl font-bold mb-4">Transform your learning experience with our AI-powered teaching assistant—personalized, interactive, and tailored just for you!</h1>
-                <form id="chat-form" class="sm:flex flex flex-col sm:flex-row items-center sm:items-start justify-center mt-8 space-x-4" action="{{ route('chat') }}" method="post">
-                    <input id="chat-input" name="prompt" type="text" class="p-4 rounded-lg w-full sm:w-96 text-black" placeholder="Your prompt">
-                    <button type="submit" class="bg-green-500 hover:bg-green-600 mt-10 sm:mt-0 text-white px-8 py-4 rounded-lg">Send</button>
+                <form id="chat-form" class="flex justify-center mt-8 space-x-4" action="{{ route('chat') }}" method="post">
+                    <input id="chat-input" name="prompt" type="text" class="p-4 rounded-lg w-96 text-black" placeholder="Your prompt">
+                    <button type="submit" class="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg">Send</button>
                 </form>
                 <div id="loading-indicator" class="hidden flex items-center justify-center gap-2 text-white mt-4">
                     <img src="{{ asset('images/loading.gif') }}" alt="Loading" class="w-6 h-6">
@@ -65,14 +85,18 @@
         </div>
     </div>
 
-
     <div class="bg-[#141411] text-white overflow-hidden">
         <div class="p-10 max-w-7xl mx-auto">
             <div id="chat-prompt" class="text-white text-center text-3xl font-bold mb-4"></div>
             <div id="content-panel" class="swiper-container hidden">
-                <div class="swiper-wrapper"></div>
-                <div class="swiper-button-next text-white mt-[400px]"></div>
-                <div class="swiper-button-prev text-white mt-[400px]"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide custom-card">
+                        <!-- Your card content here -->
+                    </div>
+                    <!-- Add more swiper slides as needed -->
+                </div>
+                <div class="swiper-button-next text-white mt-[450px]"></div>
+                <div class="swiper-button-prev text-white mt-[450px]"></div>
             </div>
         </div>
     </div>
@@ -140,7 +164,7 @@
                 if (responseDivs) {
                     responseDivs.forEach((div) => {
                         const slide = document.createElement('div');
-                        slide.classList.add('swiper-slide', 'p-6', 'bg-[#11a043]', 'rounded-lg', 'shadow-md');
+                        slide.classList.add('swiper-slide', 'custom-card');
                         slide.innerHTML = div;
                         swiperWrapper.appendChild(slide);
                     });
